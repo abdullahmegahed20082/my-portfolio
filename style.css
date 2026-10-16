@@ -1,0 +1,844 @@
+/* =========================
+   1. GENERAL SETTINGS
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #080d19;
+    color: #f1f5f9;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+span {
+    color: #38bdf8;
+}
+
+::selection {
+    background-color: #38bdf8;
+    color: #080d19;
+}
+
+
+/* =========================
+   2. ANIMATIONS
+========================= */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.35;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.65;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(56, 189, 248, 0.25);
+    }
+}
+
+
+/* =========================
+   3. NAVIGATION BAR
+========================= */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background-color: rgba(8, 13, 25, 0.88);
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid #1e293b;
+}
+
+.navbar {
+    max-width: 1150px;
+    margin: auto;
+    padding: 18px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+
+    list-style: none;
+}
+
+.nav-links a {
+    color: #a7b3c7;
+    font-size: 14px;
+
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+
+/* =========================
+   4. HERO SECTION
+========================= */
+
+.hero {
+    max-width: 1150px;
+    min-height: 650px;
+
+    margin: auto;
+    padding: 100px 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 70px;
+}
+
+.hero-content {
+    flex: 1;
+    animation: fadeIn 0.9s ease both;
+}
+
+.greeting,
+.section-label {
+    color: #38bdf8;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.hero h1 {
+    margin: 18px 0;
+
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 1.15;
+    letter-spacing: -2px;
+}
+
+.hero h2 {
+    color: #cbd5e1;
+    font-size: clamp(19px, 2.5vw, 25px);
+    font-weight: normal;
+}
+
+.description {
+    max-width: 520px;
+    margin: 22px 0 30px;
+
+    color: #94a3b8;
+    font-size: 16px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 22px;
+
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+
+    transition:
+            transform 0.3s ease,
+            background-color 0.3s ease,
+            border-color 0.3s ease,
+            box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+}
+
+.primary-btn {
+    background-color: #38bdf8;
+    color: #07111f;
+    border: 1px solid #38bdf8;
+}
+
+.primary-btn:hover {
+    background-color: #7dd3fc;
+    box-shadow: 0 8px 25px rgba(56, 189, 248, 0.2);
+}
+
+.secondary-btn {
+    border: 1px solid #334155;
+    color: #f1f5f9;
+}
+
+.secondary-btn:hover {
+    border-color: #38bdf8;
+    color: #38bdf8;
+}
+
+.social-text {
+    margin-top: 35px;
+
+    color: #64748b;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+
+/* =========================
+   5. ANIMATED PROFILE CARD
+========================= */
+
+.hero-visual {
+    position: relative;
+
+    flex: 0 0 380px;
+    min-height: 380px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    animation: fadeIn 1s ease 0.2s both;
+}
+
+.glow-circle {
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    background-color: #0c4a6e;
+    border-radius: 50%;
+    filter: blur(80px);
+
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.profile-card {
+    position: relative;
+    z-index: 2;
+
+    width: 330px;
+    padding: 25px;
+
+    background: linear-gradient(145deg, #172338, #0e1728);
+
+    border: 1px solid #263b55;
+    border-radius: 18px;
+
+    animation: float 5s ease-in-out infinite;
+    transition: border-color 0.3s ease;
+}
+
+.profile-card:hover {
+    border-color: #38bdf8;
+    animation-play-state: paused;
+}
+
+.card-top {
+    display: flex;
+    gap: 7px;
+
+    padding-bottom: 20px;
+    border-bottom: 1px solid #263449;
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+    background-color: #38bdf8;
+}
+
+.dot:nth-child(2) {
+    background-color: #64748b;
+}
+
+.dot:nth-child(3) {
+    background-color: #334155;
+}
+
+.code-symbol {
+    margin: 25px 0 15px;
+
+    color: #38bdf8;
+    font-size: 75px;
+    font-weight: bold;
+    text-align: center;
+
+    text-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+}
+
+.profile-card h3 {
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 19px;
+}
+
+.profile-card > p {
+    margin-bottom: 25px;
+
+    color: #94a3b8;
+    font-size: 13px;
+    text-align: center;
+}
+
+.code-line {
+    color: #cbd5e1;
+    font-family: Consolas, monospace;
+    font-size: 12px;
+    line-height: 2;
+}
+
+.code-line span {
+    color: #38bdf8;
+}
+
+.indent {
+    padding-left: 20px;
+    color: #a5b4fc;
+}
+
+.floating-badge {
+    position: absolute;
+    z-index: 3;
+
+    padding: 10px 15px;
+
+    background-color: #111d30;
+    border: 1px solid #263b55;
+    border-radius: 9px;
+
+    color: #38bdf8;
+    font-family: Consolas, monospace;
+    font-size: 12px;
+    font-weight: bold;
+
+    animation: float 4s ease-in-out infinite;
+}
+
+.badge-one {
+    top: 35px;
+    right: -5px;
+}
+
+.badge-two {
+    bottom: 35px;
+    left: -15px;
+    animation-delay: 1s;
+}
+
+
+/* =========================
+   6. GENERAL SECTIONS
+========================= */
+
+.section {
+    max-width: 1150px;
+    margin: auto;
+    padding: 90px 25px;
+}
+
+.section-heading {
+    margin-bottom: 35px;
+}
+
+.section-heading h2,
+.contact-box h2 {
+    margin-top: 10px;
+
+    font-size: clamp(30px, 4vw, 42px);
+    letter-spacing: -1px;
+}
+
+.section-subtitle {
+    margin-top: 10px;
+    color: #94a3b8;
+    font-size: 15px;
+}
+
+
+/* =========================
+   7. ABOUT SECTION
+========================= */
+
+.about-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+
+    padding: 30px;
+
+    background-color: #0e1728;
+    border: 1px solid #1e293b;
+    border-radius: 15px;
+
+    transition:
+            border-color 0.3s ease,
+            transform 0.3s ease;
+}
+
+.about-box:hover {
+    border-color: #38bdf8;
+    transform: translateY(-4px);
+}
+
+.about-icon {
+    flex-shrink: 0;
+
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 12px;
+
+    color: #38bdf8;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.about-box h3 {
+    margin-bottom: 10px;
+    font-size: 21px;
+}
+
+.about-box p {
+    color: #94a3b8;
+    font-size: 15px;
+}
+
+
+/* =========================
+   8. SKILLS AND PROJECTS
+========================= */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.card {
+    padding: 28px;
+
+    background: linear-gradient(145deg, #111c2f, #0c1423);
+
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+
+    transition:
+            transform 0.3s ease,
+            border-color 0.3s ease,
+            box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+
+    border-color: #38bdf8;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.card-icon {
+    margin-bottom: 20px;
+
+    color: #38bdf8;
+    font-family: Consolas, monospace;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.card h3 {
+    margin-bottom: 12px;
+    font-size: 21px;
+}
+
+.card p {
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+.tag {
+    display: inline-block;
+    margin-top: 20px;
+
+    color: #38bdf8;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.project-card {
+    min-height: 220px;
+}
+
+.project-number {
+    margin-bottom: 18px;
+
+    color: #38bdf8;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-top: 20px;
+}
+
+.project-tags span {
+    padding: 5px 10px;
+
+    background-color: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 5px;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   9. CONTACT SECTION
+========================= */
+
+.contact-box {
+    padding: 65px 30px;
+
+    text-align: center;
+
+    background:
+            radial-gradient(
+                    ellipse at top,
+                    rgba(14, 116, 144, 0.16),
+                    transparent 70%
+            ),
+            #0e1728;
+
+    border: 1px solid #263b55;
+    border-radius: 18px;
+}
+
+.contact-box h2 {
+    margin-bottom: 15px;
+}
+
+.contact-box > p:not(.section-label) {
+    max-width: 550px;
+    margin: 0 auto 25px;
+
+    color: #94a3b8;
+    font-size: 15px;
+}
+
+
+/* =========================
+   10. FOOTER
+========================= */
+
+footer {
+    padding: 35px 20px;
+
+    text-align: center;
+
+    border-top: 1px solid #1e293b;
+}
+
+footer .logo {
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+footer p {
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+.copyright {
+    margin-top: 8px;
+    color: #64748b;
+    font-size: 11px;
+}
+
+
+/* =========================
+   11. RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 900px) {
+
+    .hero {
+        gap: 30px;
+    }
+
+    .hero-visual {
+        flex-basis: 320px;
+    }
+
+    .profile-card {
+        width: 290px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .badge-one {
+        right: -5px;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 12px;
+        padding: 15px;
+    }
+
+    .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px 18px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 75px 22px;
+
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .hero-visual {
+        width: 100%;
+        min-height: 360px;
+        flex-basis: auto;
+        align-self: center;
+    }
+
+    .profile-card {
+        width: min(290px, 85%);
+    }
+
+    .badge-one {
+        right: 0;
+    }
+
+    .badge-two {
+        left: 0;
+    }
+
+    .section {
+        padding: 65px 22px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .about-box {
+        flex-direction: column;
+        padding: 22px;
+    }
+
+    .contact-box {
+        padding: 45px 20px;
+    }
+
+    .social-text {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+}
+
+
+/* Respect users who prefer reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        /* LIGHT MODE */
+
+        body.light-theme {
+            background: #f8fafc;
+            color: #0f172a;
+        }
+
+        body.light-theme header {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+        }
+
+        body.light-theme .nav-links a {
+            color: #334155;
+        }
+
+        body.light-theme .hero h2,
+        body.light-theme .secondary-btn {
+            color: #334155;
+        }
+
+        body.light-theme .description,
+        body.light-theme .section-subtitle,
+        body.light-theme .about-box p,
+        body.light-theme .card p,
+        body.light-theme .contact-box > p:not(.section-label),
+        body.light-theme footer p {
+            color: #475569;
+        }
+
+        body.light-theme .profile-card,
+        body.light-theme .card,
+        body.light-theme .about-box,
+        body.light-theme .contact-box {
+            background: #ffffff;
+            border-color: #cbd5e1;
+        }
+
+        body.light-theme .floating-badge,
+        body.light-theme .theme-toggle {
+            background: #ffffff;
+            color: #0f172a;
+            border-color: #cbd5e1;
+        }
+
+        body.light-theme .code-line {
+            color: #334155;
+        }
+
+        body.light-theme footer {
+            border-color: #cbd5e1;
+        }
+
+    }
+
+}
+/* FORCE LIGHT MODE COLORS */
+
+body.light-theme {
+    background-color: #f8fafc !important;
+    color: #0f172a !important;
+}
+
+body.light-theme header,
+body.light-theme .navbar {
+    background-color: #f8fafc !important;
+}
+
+body.light-theme .hero h2,
+body.light-theme .secondary-btn,
+body.light-theme .nav-links a {
+    color: #334155 !important;
+}
+
+body.light-theme .description,
+body.light-theme .section-subtitle,
+body.light-theme .about-box p,
+body.light-theme .card p,
+body.light-theme .contact-box p,
+body.light-theme footer p {
+    color: #475569 !important;
+}
+
+body.light-theme .profile-card,
+body.light-theme .card,
+body.light-theme .about-box,
+body.light-theme .contact-box {
+    background: #ffffff !important;
+    border-color: #cbd5e1 !important;
+}
+
+body.light-theme .floating-badge,
+body.light-theme .theme-toggle {
+    background: #ffffff !important;
+    color: #0f172a !important;
+}
+
+body.light-theme footer {
+    border-color: #cbd5e1 !important;
+}
